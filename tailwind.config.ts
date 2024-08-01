@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -8,13 +9,39 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      scrollbar: {
+        hide: {
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+      },
+      colors: {
+        primary: "#FF4654",
+        secondary: "#0D1925",
+      },
+      fontFamily: {
+        tungsten: ["Tungsten", "sans-serif"],
       },
     },
+    variants: {
+      scrollbar: ["responsive"],
+    },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".no-scrollbar": {
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+      });
+    }),
+  ],
 };
 export default config;
