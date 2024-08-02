@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export const PrimaryButton = () => {
     return (
-        <Link href={`/agents/${agentsMap[0]}`} className="bg-primary rounded-lg text-white px-4 py-2.5 uppercase font-black text-[1.25rem]">
+        <Link href={`/agents/${agentsMap[0]}`} className="bg-primary rounded-lg text-white px-4 py-2.5 uppercase font-black text-[1.25rem] hover:scale-90">
             Browse Agents
         </Link>
     )

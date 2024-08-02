@@ -25,6 +25,30 @@ const config: Config = {
       fontFamily: {
         tungsten: ["Tungsten", "sans-serif"],
       },
+      animation: {
+        flowDown: "flowDown 1s ease-in-out",
+        flowUp: "flowUp 1s ease-in-out",
+        flowRight: "flowRight 0.5s ease-in-out",
+        abilityFlow: "abilityFlow ease-in-out",
+      },
+      keyframes: {
+        flowDown: {
+          "0%": { transform: "translateY(-50%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "20" },
+        },
+        flowUp: {
+          "0%": { transform: "translateY(50%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "20" },
+        },
+        flowRight: {
+          "0%": { transform: "translateX(-50%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "100" },
+        },
+        abilityFlow: {
+          "0%": { transform: "translateX(-10%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "100" },
+        },
+      },
     },
     variants: {
       scrollbar: ["responsive"],
@@ -41,6 +65,26 @@ const config: Config = {
           "scrollbar-width": "none",
         },
       });
+    }),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "animate-delay": (value) => ({
+            animationDelay: value,
+          }),
+        },
+        { values: theme("transitionDelay") }
+      );
+    }),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "animate-duration": (value) => ({
+            animationDuration: value,
+          }),
+        },
+        { values: theme("transitionDuration") }
+      );
     }),
   ],
 };
