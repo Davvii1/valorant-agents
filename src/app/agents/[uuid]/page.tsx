@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
-import { AbilityBox, NavigationButton, SecondaryButton } from "@/components";
+import { Agent, AbilityBox, NavigationButton, SecondaryButton } from "@/components";
 import { agentsMap, getAgent, getNextAgent, getPreviousAgent } from "@/helpers/agents";
 
 export async function generateStaticParams() {
@@ -52,8 +52,8 @@ export default async function Agents({ params }: { params: { uuid: string } }) {
                 </div>
 
                 <div className="flex flex-col w-full overflow-hidden">
-                    <div className="order-3 relative 2xl:absolute top-0 left-0 z-20 w-full max-w-screen h-fit 2xl:h-full aspect-[16/9]">
-                        <Image src={`/fullscreen-characters/${agent.displayName.toLowerCase().replaceAll("/", "")}.png`} alt={`${agent.displayName} Image`} fill quality={100} priority />
+                    <div className="order-3 relative 2xl:absolute top-0 left-0 z-20 w-full max-w-screen h-fit 2xl:h-full aspect-[16/9] flex justify-center items-center">
+                        <Agent displayName={agent.displayName} />
                     </div>
                     <p className="uppercase animate-flowRight mt-20 order-2 2xl:absolute z-30 text-white font-tungsten text-[10rem] md:text-[12rem] 2xl:text-[25rem] left-12 bottom-5 leading-none text-center 2xl:text-start">
                         {agent.displayName}

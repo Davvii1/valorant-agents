@@ -30,6 +30,7 @@ const config: Config = {
         flowUp: "flowUp 1s ease-in-out",
         flowRight: "flowRight 0.5s ease-in-out",
         abilityFlow: "abilityFlow ease-in-out",
+        breathe: "breathe 1s infinite",
       },
       keyframes: {
         flowDown: {
@@ -47,6 +48,10 @@ const config: Config = {
         abilityFlow: {
           "0%": { transform: "translateX(-10%)", opacity: "0" },
           "100%": { transform: "translateX(0)", opacity: "100" },
+        },
+        breathe: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(0.95)" },
         },
       },
     },
